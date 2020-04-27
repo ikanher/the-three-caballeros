@@ -10,6 +10,7 @@
 - [ ] Train/valid/test -split (Eeva-Maria)
 - [ ] What to do with BW images (Eeva-Maria)
 - [ ] Input data normalization (mean=0, std=1) (Eeva-Maria)
+- [ ] Other image pre-processing?
 - [x] BatchNorm for FF NN (implemented id 01 -notebook)
 
 ## Some problems
