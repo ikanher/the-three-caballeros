@@ -7,9 +7,9 @@
 - [ ] Accuracy calculation
 - [x] Basic feedforward network
 - [ ] Basic CNN
-- [ ] Train/valid/test -split
-- [ ] What to do with BW images
-- [ ] Input data normalization (mean=0, std=1)
+- [ ] Train/valid/test -split (Eeva-Maria)
+- [ ] What to do with BW images (Eeva-Maria)
+- [ ] Input data normalization (mean=0, std=1) (Eeva-Maria)
 - [x] BatchNorm for FF NN (implemented id 01 -notebook)
 
 ## Some problems
