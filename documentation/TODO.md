@@ -11,11 +11,12 @@
 - [ ] What to do with BW images (Eeva-Maria)
 - [x] Input data normalization (mean=0, std=1) (Eeva-Maria)
 - [ ] Other pre-processing (whitening, ...)?
-- [x] BatchNorm for FF NN (implemented id 01 -notebook)
+- [x] BatchNorm for FF NN (implemented in 01 and 04 -notebooks)
+- [x] Report validation loss when training
 
 ## Some problems
 - [x] Support for multi-label inputs
-- [ ] Multi-label loss (might be working already?)
+- [x] Multi-label loss
 
 ## Future
 - [ ] Data augmentation
