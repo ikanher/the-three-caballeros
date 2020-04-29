@@ -3,8 +3,8 @@
 ## Basic setup
 - [x] Dataloading
 - [x] Training loop
-- [ ] Batch visualization
-- [ ] Accuracy calculation
+- [x] Batch visualization
+- [x] Accuracy calculation
 - [x] Basic feedforward network
 - [ ] Basic CNN
 - [x] Train/valid/test -split (Eeva-Maria)
@@ -13,6 +13,8 @@
 - [ ] Other pre-processing (whitening, ...)?
 - [x] BatchNorm for FF NN (implemented in 01 and 04 -notebooks)
 - [x] Report validation loss when training
+- [ ] Confusion matrix
+- [ ] Confusion matrix visulizations
 
 ## Some problems
 - [x] Support for multi-label inputs
