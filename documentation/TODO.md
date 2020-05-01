@@ -13,8 +13,8 @@
 - [ ] Other pre-processing (whitening, ...)?
 - [x] BatchNorm for FF NN (implemented in 01 and 04 -notebooks)
 - [x] Report validation loss when training
-- [ ] Confusion matrix
-- [ ] Confusion matrix visulizations
+- [ ] Confusion matrix (Eeva-Maria)
+- [ ] Confusion matrix visulizations (Eeva-Maria)
 
 ## Some problems
 - [x] Support for multi-label inputs
