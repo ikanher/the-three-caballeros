@@ -8,7 +8,7 @@
 - [x] Basic feedforward network
 - [ ] Basic CNN
 - [x] Train/valid/test -split (Eeva-Maria)
-- [ ] What to do with BW images (Eeva-Maria)
+- [ ] What to do with BW images
 - [x] Input data normalization (mean=0, std=1) (Eeva-Maria)
 - [ ] Other pre-processing (whitening, ...)?
 - [x] BatchNorm for FF NN (implemented in 01 and 04 -notebooks)
