@@ -8,13 +8,13 @@
 - [x] Basic feedforward network
 - [ ] Basic CNN
 - [x] Train/valid/test -split (Eeva-Maria)
-- [ ] What to do with BW images
+- [x] What to do with BW images - convert to RGB and include them
 - [x] Input data normalization (mean=0, std=1) (Eeva-Maria)
 - [ ] Other pre-processing (whitening, ...)?
 - [x] BatchNorm for FF NN (implemented in 01 and 04 -notebooks)
 - [x] Report validation loss when training
-- [ ] Confusion matrix (Eeva-Maria)
-- [ ] Confusion matrix visulizations (Eeva-Maria)
+- [x] Confusion matrix (Eeva-Maria)
+- [x] Confusion matrix visulizations (Eeva-Maria)
 
 ## Some problems
 - [x] Support for multi-label inputs
