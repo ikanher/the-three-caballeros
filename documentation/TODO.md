@@ -6,7 +6,7 @@
 - [x] Batch visualization
 - [x] Accuracy calculation
 - [x] Basic feedforward network
-- [ ] Basic CNN
+- [x] Basic CNN
 - [x] Train/valid/test -split (Eeva-Maria)
 - [x] What to do with BW images - convert to RGB and include them
 - [x] Input data normalization (mean=0, std=1) (Eeva-Maria)
