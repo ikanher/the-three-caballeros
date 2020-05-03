@@ -15,6 +15,7 @@
 - [x] Report validation loss when training
 - [x] Confusion matrix (Eeva-Maria)
 - [x] Confusion matrix visulizations (Eeva-Maria)
+- [ ] Use a vector of thresholds (different for different classes)
 
 ## Some problems
 - [x] Support for multi-label inputs
@@ -22,7 +23,8 @@
 
 ## Future
 - [ ] Data augmentation
-- [ ] What to do with imbalance of classes
+- [ ] What to do with imbalance of classes -> vector of thresholds should go quite far(?)
+- [ ] Improved CNN
 - [ ] Transfer learning (probably small RESNET to start with?)
 
 ## Required for the course staff:
