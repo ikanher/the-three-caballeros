@@ -22,7 +22,7 @@
 - [x] Multi-label loss
 
 ## Improvements
-- [ ] Adjust BCEWithLogitsLoss with parameter pow_weight to compensate imbalanced labels
+- [x] Adjust BCEWithLogitsLoss with parameter pow_weight to compensate imbalanced labels
 - [ ] Use a vector of thresholds (different for different classes) for evaluation
 - [ ] Improved CNN structure
 
