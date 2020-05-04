@@ -16,19 +16,21 @@
 - [x] Confusion matrix (Eeva-Maria)
 - [x] Confusion matrix visulizations (Eeva-Maria)
 
-
 ## Some problems
 - [x] Support for multi-label inputs
 - [x] Multi-label loss
 
+## Possible problems
+- [ ] When leaving out some data the normalization statistics need to be recalculated?
+
 ## Improvements
-- [x] Adjust BCEWithLogitsLoss with parameter pow_weight to compensate imbalanced labels
+- [x] Adjust BCEWithLogitsLoss with parameter pow\_weight to compensate imbalanced labels
 - [ ] Use a vector of thresholds (different for different classes) for evaluation
 - [ ] Improved CNN structure
 
 ## Future
 - [ ] Data augmentation
-- [ ] What to do with imbalance of classes (already listed pow_weight and thresholds; these should go quite far)
+- [ ] What to do with imbalance of classes (already listed pow\_weight and thresholds; these should go quite far)
 - [ ] Transfer learning (probably small RESNET to start with?)
 
 ## Required for the course staff:
