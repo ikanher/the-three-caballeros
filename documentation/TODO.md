@@ -22,16 +22,19 @@
 
 ## Possible problems
 - [ ] When leaving out some data the normalization statistics need to be recalculated?
+- [x] What to do with imbalance of classes (pos\_weight seems to work well)
 
 ## Improvements
-- [x] Adjust BCEWithLogitsLoss with parameter pow\_weight to compensate imbalanced labels
-- [ ] Use a vector of thresholds (different for different classes) for evaluation
-- [ ] Improved CNN structure
-
-## Future
 - [ ] Data augmentation
-- [ ] What to do with imbalance of classes (already listed pow\_weight and thresholds; these should go quite far)
-- [ ] Transfer learning (probably small RESNET to start with?)
+- [x] Adjust BCEWithLogitsLoss with parameter pow\_weight to compensate imbalanced labels
+- [ ] Improved CNN structure - probably better just to skip to pretrained models, training from scratch is not feasible
+- [ ] Learning rate finder/Cyclical learning rate - [Cyclical Learning Rates for Training Neural Networks](https://arxiv.org/pdf/1506.01186.pdf)
+
+## Transfer learning
+- [x] VGG16 (currently approx 0.67 validation f1)
+- [ ] RESNET 18/34/50 (no good results yet)
+- [ ] Inception?
+- [ ] Other models? [Torcvision models](https://pytorch.org/docs/stable/torchvision/models.html)
 
 ## Required for the course staff:
 - [ ] Report
