@@ -21,20 +21,24 @@
 - [x] Multi-label loss
 
 ## Possible problems
-- [ ] When leaving out some data the normalization statistics need to be recalculated?
+- [ ] When leaving out some data the normalization statistics need to be recalculated? (probably just going to use all the data now that we have pos weights)
 - [x] What to do with imbalance of classes (pos\_weight seems to work well)
 
 ## Improvements
+- [ ] Train, valid and test sets to have separate transformations
 - [ ] Data augmentation
 - [x] Adjust BCEWithLogitsLoss with parameter pow\_weight to compensate imbalanced labels
 - [ ] Improved CNN structure - probably better just to skip to pretrained models, training from scratch is not feasible
-- [ ] Learning rate finder/Cyclical learning rate - [Cyclical Learning Rates for Training Neural Networks](https://arxiv.org/pdf/1506.01186.pdf)
+- [x] [One Cycle Policy](https://arxiv.org/pdf/1803.09820.pdf) (implemented in 08 -notebook)
 
 ## Transfer learning
 - [x] VGG16 (currently approx 0.67 validation f1)
-- [ ] RESNET 18/34/50 (no good results yet)
+- [x] ResNet 18/34/50 - DOES NOT SEEM TO FIT
+- [x] ResNet 101 - Finally starting to overfit with this, Train f1: 0.9421016, Valid f1: 0.7125345
+- [ ] ResNet 152 - Could be worth testing?
 - [ ] Inception?
 - [ ] Other models? [Torcvision models](https://pytorch.org/docs/stable/torchvision/models.html)
+- [ ] More recent model, such as ResNet Inception v2 [not yet in torchvision](https://github.com/Cadene/pretrained-models.pytorch)?
 
 ## Required for the course staff:
 - [ ] Report
