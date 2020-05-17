@@ -17,10 +17,12 @@ Spring 2020
 
 ### Preprocessing
 * Read in images and labels so that we could attach a one-hot encoded vector of labels to each image
-* ?Used images with no labels (n=9824 out of 20000)
+* Used images with no labels (n=9824 out of 20000)
 * Normalized images in all three dataset using the means and stds of RGB channels of the whole image set
-* Resized images to 224x224 to enable using transfer learning models
+* NOT CURRENTLY RESIZING: (Resized images to 224x224 to enable using transfer learning models)
 * Used train-validation-test split of 0.6-0.2-0.2
+* Applied data augmentation to test set images: random flipping, affine transformations, rotation, colorjitter and grayscaling
+* Calculated pos_weights (to be used with BCEWithLogitsLoss) for all labels using function calculate_label_statistics
 
 ### Training
 * BCEWithLogitsLoss as the loss function. Used the pos_weight parameter to control the label imbalance in the training data.
@@ -30,8 +32,9 @@ Spring 2020
 * ?Dropout
 
 ### Evaluation
-* f1 scores to evaluate models
-* 
+* We used **f1 scores** to evaluate models
+  * with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric
+* Thresholds - DESCRIBE THE USED ONES
 
 ### Functions and parts of final code
 * Data loading
@@ -80,3 +83,5 @@ Tried ImageFolder for loading images. Noticed that it does not really work for m
 
 ## Error analysis
 Representative examples, with possible explanations about what does not work and how it could be made to work better.
+
+- Difference between male and female labels is in some cases hard to tell (for the network, but also for human observers)

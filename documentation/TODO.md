@@ -25,8 +25,8 @@
 - [x] What to do with imbalance of classes (pos\_weight seems to work well)
 
 ## Improvements
-- [ ] Train, valid and test sets to have separate transformations
-- [ ] Data augmentation
+- [x] Train, valid and test sets to have separate transformations
+- [x] Data augmentation
 - [x] Adjust BCEWithLogitsLoss with parameter pow\_weight to compensate imbalanced labels
 - [ ] Improved CNN structure - probably better just to skip to pretrained models, training from scratch is not feasible
 - [x] [One Cycle Policy](https://arxiv.org/pdf/1803.09820.pdf) (implemented in 08 -notebook)
