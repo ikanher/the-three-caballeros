@@ -34,7 +34,13 @@ Spring 2020
 ### Evaluation
 * We used **f1 scores** to evaluate models
   * with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric
-* Thresholds - DESCRIBE THE USED ONES
+* Thresholds
+
+We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score.
+
+For example, here we would choose 0.75 as the threshold.
+
+![threshold_search.png](images/threshold_search.png)
 
 ### Functions and parts of final code
 * Data loading
