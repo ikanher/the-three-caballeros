@@ -4,7 +4,9 @@ University of Helsinki
 Spring 2020
 
 **Group name**: The Three Caballeros
+
 **Group members**: Mikko Kotola, Eeva-Maria Laiho, Aki Rehn
+
 **Chosen dataset**: Images
 
 *To be removed: mandatory content of the report (from instructions)*
@@ -58,7 +60,6 @@ For example, here we would choose 0.75 as the threshold.
 ### Loading images
 Tried ImageFolder for loading images. Noticed that it does not really work for multilabel classification (would work for multiclass single-label classification). After that used adopted the vector of labels per image approach.
 
-
 ### Network type, structure and parameters
 
 #### Simple feedforward network
@@ -66,23 +67,34 @@ Tried ImageFolder for loading images. Noticed that it does not really work for m
 #### Self-trained convolutional neural networks
 
 #### Transfer learning models
-##### VGG16 with pytorch 1.4.0
 
-* replaced output layer with two linear layers 8192->1024 ja 1024->14 and trained it with x epochs
-* with threshold=0.75: validation f1 score of 0.73
+##### VGG16
 
-##### VGG16 with pytorch 1.5.0
-* replaced output layer with our own and trained it with x epochs
-* validation f1 score of 0.67
+* replaced fully connected with two linear layers 4096->2048 and 2048->14 and trained all the layers
+* validation f1 score of 0.71
 
 ##### VGG16 with batch normalization
 
-##### VGG16 without batch normalization
+* for some unknown reason VGG16 with batch normalization gave worse results than plain VGG16 so we did not perform more testing with it.
 
 ##### ResNet-101
 
+ResNet-101 was the first ResNet that started to validation f1 score that we were happy with and so we decided to forget about ResNet-34 and ResNet-50.
+
+* replaced output layer with two linear layers 2048->14 and trained all the layers
+* validation f1 score of 0.73
+
 ##### ResNet-152
 
+TBD
+
+## Optimization
+
+As SGD is known to generalize better than it's adaptive variations we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
+
+First we did manual training for few epochs, reduced the learning rate and trained with more epochs. With a lot of work achieved a validation accuracy of ~0.73 using this method.
+
+This turned out to be labor intensive so instead we switched to use One Cycle Policy (https://arxiv.org/abs/1708.07120). Now, without the manual labor, we managed to reach the same ~0.73 validaton f1 score with One Cycle Policy.
 
 ## Other notes
 * Labels in the training set are not independent. E.g male and female photos are always also people photos. It's important to train the model with all labels for a certain image so that it can learn from these dependencies.
