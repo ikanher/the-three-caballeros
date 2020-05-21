@@ -24,10 +24,10 @@ Spring 2020
 * NOT CURRENTLY RESIZING: (Resized images to 224x224 to enable using transfer learning models)
 * Used train-validation-test split of 0.6-0.2-0.2
 * Applied data augmentation to test set images: random flipping, affine transformations, rotation, colorjitter and grayscaling
-* Calculated pos_weights (to be used with BCEWithLogitsLoss) for all labels using function calculate_label_statistics
+* Calculated pos\_weights (to be used with BCEWithLogitsLoss) for all labels using function calculate\_label\_statistics
 
 ### Training
-* BCEWithLogitsLoss as the loss function. Used the pos_weight parameter to control the label imbalance in the training data.
+* BCEWithLogitsLoss as the loss function. Used the pos\_weight parameter to control the label imbalance in the training data.
 * Stochastic gradient descent as the training algorithm
 * Batch size x
 * Learning rate x
@@ -40,7 +40,7 @@ Spring 2020
 
 We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score.
 
-For example, here we would choose 0.75 as the threshold.
+For example, here we would choose 0.70 as the threshold.
 
 ![threshold_search.png](images/threshold_search.png)
 
