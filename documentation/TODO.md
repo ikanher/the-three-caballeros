@@ -10,11 +10,11 @@
 - [x] Train/valid/test -split (Eeva-Maria)
 - [x] What to do with BW images - convert to RGB and include them
 - [x] Input data normalization (mean=0, std=1) (Eeva-Maria)
-- [ ] Other pre-processing (whitening, ...)?
 - [x] BatchNorm for FF NN (implemented in 01 and 04 -notebooks)
 - [x] Report validation loss when training
 - [x] Confusion matrix (Eeva-Maria)
 - [x] Confusion matrix visulizations (Eeva-Maria)
+- [ ] Other pre-processing (whitening, ...)?
 
 ## Some problems
 - [x] Support for multi-label inputs
@@ -22,12 +22,12 @@
 
 ## Possible problems
 - [ ] When leaving out some data the normalization statistics need to be recalculated? (probably just going to use all the data now that we have pos weights)
-- [x] What to do with imbalance of classes (pos\_weight seems to work well)
+- [x] What to do with imbalance of classes (`pos_weight` seems to work well)
 
 ## Improvements
 - [x] Train, valid and test sets to have separate transformations
 - [x] Data augmentation
-- [x] Adjust BCEWithLogitsLoss with parameter pow\_weight to compensate imbalanced labels
+- [x] Adjust BCEWithLogitsLoss with parameter `pos_weight` to compensate imbalanced labels
 - [ ] Improved CNN structure - probably better just to skip to pretrained models, training from scratch is not feasible
 - [x] [One Cycle Policy](https://arxiv.org/pdf/1803.09820.pdf) (implemented in 08 -notebook)
 
@@ -40,7 +40,16 @@
 - [ ] Other models? [Torcvision models](https://pytorch.org/docs/stable/torchvision/models.html)
 - [ ] More recent model, such as ResNet Inception v2 [not yet in torchvision](https://github.com/Cadene/pretrained-models.pytorch)?
 
+## Report
+- [ ] Explain what approaches and parameters you have tried
+- [ ] What worked well and what did not
+- [ ] *error analysis*: present some representative examples, with possible explanations about what does not work and how it could be made to work better
+
 ## Required for the course staff:
-- [ ] Report
-- [ ] Output for `test_eval.py` -script
-- [ ] Ground truth for `test_eval.py` -script
+- [x] Output for `test_eval.py` -script
+
+## Submission
+- [ ] Project code
+- [ ] System output on test data
+- [ ] A short report / documentation
+- [ ] Return zip to roman.yangarber@helsinki.fi, lidia.pivovarova@helsinki.fi, anh-duc.vu@helsinki.fi
