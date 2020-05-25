@@ -40,10 +40,13 @@
 - [ ] Other models? [Torcvision models](https://pytorch.org/docs/stable/torchvision/models.html)
 - [ ] More recent model, such as ResNet Inception v2 [not yet in torchvision](https://github.com/Cadene/pretrained-models.pytorch)?
 
+## Final tweaks
+- [ ] Train with valid/test data
+
 ## Report
 - [ ] Explain what approaches and parameters you have tried
 - [ ] What worked well and what did not
-- [ ] *error analysis*: present some representative examples, with possible explanations about what does not work and how it could be made to work better
+- [ ] **error analysis**: present some representative examples, with possible explanations about what does not work and how it could be made to work better
 
 ## Required for the course staff:
 - [x] Output for `test_eval.py` -script
