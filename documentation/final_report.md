@@ -42,11 +42,11 @@ Spring 2020
     * with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric
 * Thresholds
 
-We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score.
+    We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score.
 
-For example, here we would choose 0.70 as the threshold.
+    For example, here we would choose 0.70 as the threshold.
 
-![threshold_search.png](images/threshold_search.png)
+    ![threshold_search.png](images/threshold_search.png)
 
 ### Functions and parts of final code
 * Data loading
