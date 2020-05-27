@@ -22,7 +22,7 @@ Spring 2020
 * Also used images with no labels (n=9824 out of 20000)
 * Used train-validation-test split of 0.6-0.2-0.2
 * Transformations applied to all data sets
-    * Normalized images using the means and stds of RGB channels of the given image set
+    * Normalized images using the means and stds of the RGB channels computed over the given image set
     * NOT CURRENTLY RESIZING: (Resized images to 224x224 to enable using transfer learning models)
 * Random data augmentation applied to train set images only
     * Random flipping, affine transformations, rotation, colorjitter and grayscaling
