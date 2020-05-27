@@ -19,30 +19,34 @@ Spring 2020
 
 ### Preprocessing
 * Read in images and labels so that we could attach a one-hot encoded vector of labels to each image
-* Used images with no labels (n=9824 out of 20000)
-* Normalized images in all three dataset using the means and stds of RGB channels of the whole image set
-* NOT CURRENTLY RESIZING: (Resized images to 224x224 to enable using transfer learning models)
+* Also used images with no labels (n=9824 out of 20000)
 * Used train-validation-test split of 0.6-0.2-0.2
-* Applied data augmentation to test set images: random flipping, affine transformations, rotation, colorjitter and grayscaling
+* Transformations applied to all data sets
+    * Normalized images using the means and stds of the RGB channels computed over the given image set
+    * NOT CURRENTLY RESIZING: (Resized images to 224x224 to enable using transfer learning models)
+* Random data augmentation applied to train set images only
+    * Random flipping, affine transformations, rotation, colorjitter and grayscaling
 * Calculated pos\_weights (to be used with BCEWithLogitsLoss) for all labels using function calculate\_label\_statistics
 
 ### Training
-* BCEWithLogitsLoss as the loss function. Used the pos\_weight parameter to control the label imbalance in the training data.
+* BCEWithLogitsLoss as the loss function. 
+    * Used the pos\_weight parameter to control the label imbalance in the training data.
 * Stochastic gradient descent as the training algorithm
-* Batch size x
-* Learning rate x
-* ?Dropout
+* Batch size 64
+* Learning rate: using one-cycle-policy 
+* Dropout: NOT CURRENTLY USING DROPOUT
+    * p=0.5 after the 1st linear layer, p=0.2 after other linear layer(s)
 
 ### Evaluation
 * We used **f1 scores** to evaluate models
-  * with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric
+    * with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric
 * Thresholds
 
-We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score.
+    We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score.
 
-For example, here we would choose 0.70 as the threshold.
+    For example, here we would choose 0.70 as the threshold.
 
-![threshold_search.png](images/threshold_search.png)
+    ![threshold_search.png](images/threshold_search.png)
 
 ### Functions and parts of final code
 * Data loading
@@ -55,9 +59,11 @@ For example, here we would choose 0.70 as the threshold.
 ## Final F1-score of the group’s model: xxx
 
 ## Other approaches and parameters the group tried
+
 *Let’s describe along with the approach or set of parameters how well it worked.*
 
 ### Loading images
+
 Tried ImageFolder for loading images. Noticed that it does not really work for multilabel classification (would work for multiclass single-label classification). After that used adopted the vector of labels per image approach.
 
 ### Network type, structure and parameters
