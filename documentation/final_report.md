@@ -30,7 +30,6 @@ Our best-performing model was a deep pretrained convolutional neural network wit
 * **Learning rate**: using one-cycle-policy 
 * **25 epochs**: the validation accuracy had leveled off at this point and the validation loss was already rising, so we opted for early stopping after 25 epochs.
 
-resnet152_train_curves.png
 ![Training of the resnet-152](images/resnet152_train_curves.png)
 
 ### Evaluation
@@ -103,6 +102,7 @@ The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.6
 - **Can't make difference between labels male and female.** Discriminating between males and females is in some cases very hard (for the network, but also for human observers) as the appearance of males and females is in some cases almost identical. The f1 score of people (0.88) was much higher than for female (0.75) and male (0.67). This error is hard to improve on.
 
 ![False positive female](./errorimages/falsenegatives/fn_baby2.png)
+
 - **Same person is male and female.** In some cases the model thinks the same person is both male and female. This is an error that a human observer would likely not make: people are almost never *both* sexes. And this is something the network should be able to learn (but that might be hard to learn for a convolutional network like ours).
 - **Difference between baby and a small child is fuzzy.** The label baby (f1 0.65) was quite difficult for the model: the easy part in identifying babies was presumably identifying them as humans and the difficulty was drawing the line between baby and child (a small human that is no longer a baby). This line is fuzzy for human observers also, so the tags will most likely be somewhat incoherent. The example above is labeled as a baby, but many human observers would say "He's not a baby anymore!".
 
