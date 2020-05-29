@@ -13,3 +13,12 @@
 | ResNet-101 | --- | --- | --- | 
 | ResNet-152 | --- | --- | --- | 
 
+
+
+|: Logical Operators :| <--------------
+|:---:| --- |
+| `&&` | Logical and |
+| `\|\|` | Logical or |
+| `!` | Logical not |
+| `? :` | Logical ternary |
+
