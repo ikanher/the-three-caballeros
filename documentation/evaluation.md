@@ -4,7 +4,7 @@
 | Feed forward 2-layer | --- | --- | --- | 
 | Convolutional | 0.145 | 0.118 | 0.186 | 
 | Plain ResNet-152 | --- | --- | --- | 
-| Models that use transfer learning | < | < | < |
+|\4 Models that use transfer learning |
 | VGG16 | --- | --- | --- | 
 | VGG16 with BN | --- | --- | --- | 
 | ResNet-18 | --- | --- | --- | 
@@ -14,11 +14,4 @@
 | ResNet-152 | --- | --- | --- | 
 
 
-
-|: Logical Operators :| <--------------
-|:---:| --- |
-| `&&` | Logical and |
-| `\|\|` | Logical or |
-| `!` | Logical not |
-| `? :` | Logical ternary |
 
