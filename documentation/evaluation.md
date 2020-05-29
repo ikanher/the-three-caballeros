@@ -9,7 +9,7 @@ Models that use transfer learning
 
 | Model | F1-score | Precision | Recall |
 | --- | --- | --- | --- | 
-| VGG16 | --- | --- | --- |  
+| VGG16 | 0.700 | 0.626 | 0.794 |  
 | VGG16 with BN | --- | --- | --- |
 | ResNet-18 | --- | --- | --- | 
 | ResNet-34 | --- | --- | --- | 
