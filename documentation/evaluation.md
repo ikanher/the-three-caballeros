@@ -4,7 +4,11 @@
 | Feed forward 2-layer | --- | --- | --- | 
 | Convolutional | 0.145 | 0.118 | 0.186 | 
 | Plain ResNet-152 | --- | --- | --- | 
-|\4 Models that use transfer learning |
+
+Models that use transfer learning
+
+| Model | F1-score | Precision | Recall |
+| --- | --- | --- | --- | 
 | VGG16 | --- | --- | --- | 
 | VGG16 with BN | --- | --- | --- | 
 | ResNet-18 | --- | --- | --- | 
