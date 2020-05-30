@@ -13,7 +13,7 @@ Results for models that use transfer learning.
 | VGG16 with BN | 0.669 | 0.565 | 0.820 | 27min 44s | 
 | ResNet-18 | --- | --- | --- | --- | 
 | ResNet-34 | --- | --- | --- | --- | 
-| ResNet-50 | --- | --- | --- | --- | 
+| ResNet-50 | 0.749 | 0.727 | 0.772 | 29min 29s | 
 | ResNet-101 | 0.745 | 0.718 | 0.773 | 36min 57s | 
 | ResNet-152 | --- | --- | --- | --- | 
 
