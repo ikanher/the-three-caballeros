@@ -1,3 +1,9 @@
+## Evaluation of trained models
+
+All the models have been trained on our own training set (60% of all data) with batch size of 64 for 25 epochs. For all models we use ```BCEWithLogitsLoss``` loss function, ```SGD``` optimizer and ```OneCycle``` scheduler with the same hyperparameters (documented above).
+
+Results for models that utilize data augmentation techniques.
+
 | Model | F1-score | Precision | Recall | Training time |
 | --- | --- | --- | --- | --- | 
 | Feed forward 1-layer | 0.245 | 0.191 | 0.341 | 22min 57s | 
@@ -5,7 +11,7 @@
 | Convolutional | 0.145 | 0.118 | 0.186 | 26min 55s | 
 | Plain ResNet-152 | --- | --- | --- | --- | 
 
-Results for models that use transfer learning and data augmentation.
+Results for models that utilize transfer learning and data augmentation techniques.
 
 | Model | F1-score | Precision | Recall | Training time | 
 | --- | --- | --- | --- | --- | 
@@ -16,5 +22,9 @@ Results for models that use transfer learning and data augmentation.
 | ResNet-101 | 0.745 | 0.718 | 0.773 | 36min 57s | 
 | ResNet-152 | --- | --- | --- | --- | 
 
+Results for models that utilize transfer learning and data augmentation techniques.
 
+| Model | F1-score | Precision | Recall | Training time |
+| --- | --- | --- | --- | --- | 
+| ResNet-152 without augmentation | --- | --- | --- | --- | 
 
