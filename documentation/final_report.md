@@ -50,9 +50,11 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 * Evaluation of model
 * Visualizing confusion matrices for each class
 
-## Pretrained model selection
+## Model selection
 
 As SGD is known to generalize better [1] than it's adaptive variations we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
+
+It was quite clear from the beginning that we would need transfer learning to achieve any notable results. But to test our pipeline and to get some kind of baselines we started with one and two layer feedforward neural networks. As suspected these did not give very good results. We also tested a simple CNN and more complex CNN (similar to VGG16) and tried to train these without much success. But now we knew that our pipeline worked and we could switch to pretrained models, which will be described next.
 
 We started with a model that is easy to understand, known to be robust and perform rather well. So the first model gave us some notable results was ***VGG16***. Training was performed manually, using plain SGD with Momentum. After some initial fuzzing around we noticed that 0.01 was the learning rate to use. The model was trained for several epochs and after the validation F1 -score stopped increasing the learning rate was decreased and more training was performed. After many trial-and-errors training periods we managed to get the validation F1 -score to around 0.71. However, the training score never got very high and it was obvious that we are not overfitting yet.
 
