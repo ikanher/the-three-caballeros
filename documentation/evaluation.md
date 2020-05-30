@@ -22,7 +22,7 @@ Results for models that utilize transfer learning and data augmentation techniqu
 | ResNet-34 | 0.726 | 0.684 | 0.774 | 27min 36s | 
 | ResNet-50 | 0.749 | 0.727 | 0.772 | 29min 29s | 
 | ResNet-101 | 0.745 | 0.718 | 0.773 | 36min 57s | 
-| ResNet-152 | --- | --- | --- | --- | 
+| ResNet-152 | 0.759 | 0.729 | 0.791 | 42min 22s | 
 
 Results for models that utilize transfer learning (without data augmentation).
 
