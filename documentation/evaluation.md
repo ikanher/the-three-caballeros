@@ -28,5 +28,5 @@ Results for models that utilize transfer learning (without data augmentation).
 
 | Model | F1-score | Precision | Recall | Training time |
 | --- | --- | --- | --- | --- | 
-| ResNet-152 without augmentation | --- | --- | --- | --- | 
+| ResNet-50 no aug | 0.751 | 0.783 | 0.722 | 14min 4s | 
 
