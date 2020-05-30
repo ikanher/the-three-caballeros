@@ -11,7 +11,7 @@ Results for models that utilize data augmentation techniques.
 | Feed forward 1-layer | 0.245 | 0.191 | 0.341 | 0.881 | 22min 57s | 
 | Feed forward 2-layer | 0.269 | 0.206 | 0.387 | 0.989 | 24min 9s | 
 | Convolutional | 0.145 | 0.118 | 0.186 | 0.879 | 26min 55s | 
-| Plain ResNet-152 | --- | --- | --- | --- | --- |
+| Plain ResNet-152 | --- | --- | --- | - | - |
 
 Results for models that utilize transfer learning and data augmentation techniques.
 
