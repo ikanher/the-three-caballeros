@@ -4,6 +4,8 @@ Below are listed the results of running the ```test_eval.py``` script for each t
 
 All the models have been trained on our own training set (60% of the initial data). The models are trained for 25 epochs using a batch size of 64. For all models we use ```BCEWithLogitsLoss``` loss function, ```SGD``` optimizer and ```OneCycle``` scheduler (documented in detail above).
 
+In the results we list also ```Ratio of F1``` for each model. We used ```Ratio of F1``` as a measure of overfitting and it was computed as a ratio of training and validation F1-scores after epoch 25. 
+
 Results for models that utilize data augmentation techniques.
 
 | Model | F1-score | Precision | Recall | Ratio of F1 | Training time |
