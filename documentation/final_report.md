@@ -58,9 +58,9 @@ It was quite clear from the beginning that we would need transfer learning to ac
 
 We started with a model that is easy to understand, known to be robust and perform rather well. So the first model gave us some notable results was ***VGG16***. Training was performed manually, using plain SGD with Momentum. After some initial fuzzing around we noticed that 0.01 was the learning rate to use. The model was trained for several epochs and after the validation F1 -score stopped increasing the learning rate was decreased and more training was performed. After many trial-and-errors training periods we managed to get the validation F1 -score to around 0.71. However, the training score never got very high and it was obvious that we are not overfitting yet.
 
-For ***VGG16*** we retrained all the layers but replaced the fully connected layers with our two layers of our own: 4096->2048 and 2048->14 with ReLUs between.
+For ***VGG16*** we retrained all the layers but replaced the fully connected layers with two layers of our own: 4096->2048 and 2048->14 with ReLUs between.
 
-As a side note: we also tested a batch normalized version of ***VGG16*** but for some unknown reason it did reach as high F1 -score as the plain ***VGG16*** that we had already trained. This was bit surprising, as we thought that in theory a batch normalized network should perform at least as well as without batch normalization.
+As a side note: we also tested a batch normalized version of ***VGG16*** but for some unknown reason it did not reach as high F1 -score as the plain ***VGG16*** that we had already trained. This was bit surprising, as we thought that in theory a batch normalized network should perform at least as well as without batch normalization.
 
 After establishing a well working learning rate it was time to drop the manual labor: we adopted One Cycle Policy [2]. This gave us the opportunity to use the learning rate that had been proven to work (0.01) and use that as a max learning rate for One Cycle Policy. For momentum we used a base of 0.5 and a max value to 0.95. We tested both normal Momentum and Nesterov Momentum, which of the latter was used to train our more advanced models. At this point we still did not overfit.
 
@@ -68,12 +68,12 @@ After not yet overfitting it was time to move to more modern networks. We starte
 
 For ***ResNet*** models we just replaced the fully connected layers with a direct mapping to our label space of 14 outputs. For example, with ***ResNet-34/50*** we used a linear layer with 512 inputs and 14 outputs, and with ***ResNet-101/152*** we used a linear layer with 2048 input and 14 outputs.
 
-Now that we had our model overfitting, it was to start fighting the overfitting. As everybody knows the best way is to fight regularization is to get more data! However, the competition rules required us to train with the given data. Also, as we were using pretrained models it was not possible to add any more regularization to the model. So the next step was to perform data augmentation to get more training data.
+Now that we had our model overfitting, it was time to start fighting the overfitting. As everybody knows the best way to fight overfitting is to get more data! However, the competition rules required us to train with the given data. Also, as we were using pretrained models it was not possible to add any more regularization to the model. So the next step was to perform data augmentation to get more training data.
 We tested numerous data augmenting policies. After some testing we ended up using our custom data augmentation policy: we modified existing PyTorch code to create a new policy that randomly (with a given probability) selects transformations from a given list. The list consisted of horizontal flips, rotations, color jitter adjustments, turning images into grayscale, and changing of perspective.
 
 After adding the data augmentation to the pipeline the model stopped overfitting, as expected. So it was time to turn to a bigger model! Just tuning up and using a pretrained ResNet model proved to be efficient when we managed to train the ***ResNet-152*** model to a validation F1 -score of about 0.78. The training accuracy was around 0.88 so we were not overfitting that bad and there could have been chances for improvement. However, we decided to stick with this model.
 
-The final touches we did was to train our model with the validation and testing data that we had for our own purposes: the data do not include any training examples that our model is going to be evaluated against, and also the data included training examples that the model had not seen before, so there was a learning possibility!
+The final touches we did was to train our model with the validation and testing data that we had for our own purposes: the data do not include any training examples that our model is going to be evaluated against, and also the data included training examples that the model had not seen before, so there was a learning possibility for the model!
 
 Evaluation metrics (```F1-score```, ```Precision```, ```Recall```) for each model evaluated against our own test set are listed below under heading 'Evaluation of different approaches'.
 
