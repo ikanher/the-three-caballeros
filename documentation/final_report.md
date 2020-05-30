@@ -11,6 +11,10 @@ Spring 2020
 
 ## Final F1-score of the group’s model on the test set: xxx
 
+WE DIDN't GET THE true_labels.txt FILE, DID WE?
+
+Final results: [../results/resnet152_final_actual_pred.txt]
+
 ## Short description of the final model and training process
 ### Model: Resnet-152
 Our best-performing model was a deep pretrained convolutional neural network with residual connections. We froze all layers but the final layer, which we replaced with our own 2048->14 fully connected layer, which we trained. Our final F1-score on own test data was 0.78 (micro averaging). 
