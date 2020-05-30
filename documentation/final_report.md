@@ -37,10 +37,10 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 ![Training of the resnet-152](images/resnet152_train_curves.png)
 
 ### Evaluation
-* We used **f1 scores** to evaluate models with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric. We also considered the 'macro' averaging, which could have been appropriate if the label frequencies in the test set would have been different from training data. But our understanding was that the test set would be similar to the training set also in this aspect (and 'micro' seemed to be used in the test_eval.py script), so we stuck with 'micro'.
+* We used **f1 scores** to evaluate models with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric. We also considered the 'macro' averaging, which could have been appropriate if the label frequencies in the test set would have been different from training data. But our understanding was that the test set would be similar to the training set also in this aspect (and 'micro' seemed to be used in the test\_eval.py script), so we stuck with 'micro'.
 * **Thresholds.** We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score. Our model gave best results with the threshold of 0.65.
 
-![Threshold search for teh resnet-152](images/resnet152_threshold_search.png)
+![Threshold search for the resnet-152](images/resnet152_threshold_search.png)
 
 
 ### Functions and parts of final code
@@ -49,41 +49,31 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 * Training
 * Evaluation of model
 * Visualizing confusion matrices for each class
- 
 
-## Other approaches and parameters the group tried
+## Model selection
 
-### Loading images
+As SGD is known to generalize better [1] than it's adaptive variations we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
 
-Tried ImageFolder for loading images. Noticed that it does not really work for multilabel classification (would work for multiclass single-label classification). After that used adopted the vector of labels per image approach.
+We started with a model that is easy to understand, known to be robust and perform rather well. So the first model gave us some notable results was ***VGG16***. Training was performed manually, using plain SGD with Momentum. After some initial fuzzing around we noticed that 0.01 was the learning rate to use. The model was trained for several epochs and after the validation F1 -score stopped increasing the learning rate was decreased and more training was performed. After many trial-and-errors training periods we managed to get the validation F1 -score to around 0.71. However, the training score never got very high and it was obvious that we are not overfitting yet.
 
-### Network type, structure and parameters
+For ***VGG16*** we retrained all the layers but replaced the fully connected layers with our two layers of our own: 4096->2048 and 2048->14 with ReLUs between.
 
-Evaluation metrocs (```F1-score```, ```Precision```, ```Recall```) for each model evauated against our own test set are listed below under heading 'Evaluation of different approaches'.
+As a side note: we also tested a batch normalized version of ***VGG16*** but for some unknown reason it did reach as high F1 -score as the plain ***VGG16*** that we had already trained. This was bit surprising, as we thought that in theory a batch normalized network should perform at least as well as without batch normalization.
 
-#### Simple feedforward network
-We first ran simple one and two layer feedforward neural networks (with fully connected layers and ReLu activations) to see that our pipeline works. 
+After establishing a well working learning rate it was time to drop the manual labor: we adopted One Cycle Policy [2]. This gave us the opportunity to use the learning rate that had been proven to work (0.01) and use that as a max learning rate for One Cycle Policy. For momentum we used a base of 0.5 and a max value fo 0.95. We tested both normal Momentum and Nesterov Momentum, which of the latter was used to train our more advanced models. At this point we still did not overfit.
 
-#### Self-trained convolutional neural networks
-We built a few convolutional models from scratch: one simple one and one following the structure of the VGG16. The results were not impressive and we knew these models would require much more training data than we had to perform well, so we quite quickly moved to transfer learning. 
+After not yet overfitting it was time to move to more modern networks. We started with ***ResNet-34*** which did not perform very well. The same thing happened with ***ResNet-50***, so we tuned up again. After training for 20 epochs we reached a training and validation F1 -scores of 0.94 and 0.71 respectively. Finally, ***ResNet-101*** was the first model that started to overfit!
 
-#### Transfer learning models
+For ***ResNet*** models we just replaced the fully connected layers with a direct mapping to our label space of 14 outputs. For example, with ***ResNet-34/50*** we used a linear layer with 512 inputs and 14 outputs, and with ***ResNet-101/152*** we used a linear layer with 2048 input and 14 outputs.
 
-##### VGG16
-VGG16 was the first transfer learning model we tried.
+Now that we had our model overfitting, it was to start fighting the overfitting. As everybody knows the best way is to fight regularization is to get more data! However, the competition rules required us to train with the given data. Also, as we were using pretrained models it was not possible to add any more regularization to the model. So the next step was to perform data augmentation to get more training data.
+We tested numerous data augmenting policies. After some testing we ended up using our custom data augmentation policy: we modified existing PyTorch code to create a new policy that randomly (with a given probability) selects transformations from a given list. The list consisted of horizontal flips, rotations, color jitter adjustments, turning images into grayscale, and changing of perspective.
 
-* replaced fully connected with two linear layers 4096->2048 and 2048->14 and trained all the layers
+After adding the data augmentation to the pipeline the model stopped overfitting, as expected. So it was time to turn to a bigger model! Just tuning up and using a pretrained ResNet model proved to be efficient when we managed to train the ***ResNet-152*** model to a validation F1 -score of about 0.78. The training accuracy was around 0.88 so we were not overfitting that bad and there could have been chances for improvement. However, we decided to stick with this model.
 
-##### VGG16 with batch normalization
-For some unknown reason VGG16 with batch normalization gave worse results than plain VGG16 so we did not perform more testing with it.
+The final touches we did was to train our model with the validation and testing data that we had for our own purposes: the data do not include any training examples that our model is going to be evaluated against, and also the data included training examples that the model had not seen before, so there was a learning possibility!
 
-##### ResNet-101
-ResNet-101 was the first ResNet that started to validation f1 score that we were happy with and so we decided to forget about ResNet-34 and ResNet-50.
-
-* replaced output layer with two linear layers 2048->14 and trained all the layers
-
-##### ResNet-152
-This was the model that we got best results with. Described in more detail under *Short description of the final model and training process*.
+Evaluation metrics (```F1-score```, ```Precision```, ```Recall```) for each model evauated against our own test set are listed below under heading 'Evaluation of different approaches'.
 
 ## Evaluation of different approaches
 
@@ -118,18 +108,8 @@ Results for models that utilize transfer learning (without data augmentation).
 | ResNet-50 no aug | 0.751 | 0.783 | 0.722 | 1.350 | 14min 4s | 
 | ResNet-50 no aug with dropout | 0.760 | 0.783 | 0.739 | 1.344 | 13min 51s | 
 
-
-## Optimization
-As SGD is known to generalize better than it's adaptive variations we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
-
-First we did manual training for few epochs, reduced the learning rate and trained with more epochs. With a lot of work achieved a validation accuracy of ~0.73 using this method.
-
-This turned out to be labor intensive so instead we switched to use One Cycle Policy (https://arxiv.org/abs/1708.07120). Now, without the manual labor, we managed to reach the same ~0.73 validaton f1 score with One Cycle Policy. Later, with a larger model, we were able to reach a 0.76 validation f1 score (without manual labor).
-
-
 ## Other notes
 * Labels in the training set are not all independent. E.g male, female and baby photos are very often also people photos. It's important to train the model with all labels for a certain image so that it can learn from these dependencies.
-
 
 ## Error analysis
 The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.65). The precision and recall components were quite close to each other for all other classes but *sea* (precision 0.70, recall 0.43), which would suggest that using class-specific thresholds would not give any significant improvement for any classes but perhaps sea. For sea, the precision score is higher than the recall score, so lowering the threshold might improve the performance. 
@@ -161,8 +141,6 @@ The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.6
 ![False positive river](./errorimages/falsepositives/fp_river.png)
 ![False negative river](./errorimages/falsenegatives/fn_river.png)
 - **Obviously wrong labels**. The labels have been given by humans (on Amazon mechanical turk or some other similar service). Humans make mistakes. So sometimes the model predicts something that seems more right than the ground truth. The only way to improve this is to get better quality training data.
-
-
 
 ### Per label performance
 
@@ -196,6 +174,8 @@ We also evaluated our model's by-label performance by plotting a confusion matri
 
 ![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
 
+# References
 
+1 - Wilson A. et al., The Marginal Value of Adaptive Gradient Methodsin Machine Learning, http://papers.nips.cc/paper/7003-the-marginal-value-of-adaptive-gradient-methods-in-machine-learning.pdf
 
-
+2 - Smith L., Super-Convergence: Very Fast Training of NeuralNetworks Using Large Learning Rates, https://arxiv.org/pdf/1708.07120.pdf
