@@ -57,8 +57,10 @@ Tried ImageFolder for loading images. Noticed that it does not really work for m
 
 ### Network type, structure and parameters
 
+Evaluation metrocs (```F1-score```, ```Precision```, ```Recall```) for each model evauated against our own test set are listed below under heading 'Evaluation of different approaches'.
+
 #### Simple feedforward network
-We first ran simple one and two layer feedforward neural networks (with fully connected layers and ReLu activations) to see that our pipeline works. We did not mearure the f1 scores yet for these models.
+We first ran simple one and two layer feedforward neural networks (with fully connected layers and ReLu activations) to see that our pipeline works. 
 
 #### Self-trained convolutional neural networks
 We built a few convolutional models from scratch: one simple one and one following the structure of the VGG16. The results were not impressive and we knew these models would require much more training data than we had to perform well, so we quite quickly moved to transfer learning. 
@@ -69,7 +71,6 @@ We built a few convolutional models from scratch: one simple one and one followi
 VGG16 was the first transfer learning model we tried.
 
 * replaced fully connected with two linear layers 4096->2048 and 2048->14 and trained all the layers
-* validation f1 score of 0.71
 
 ##### VGG16 with batch normalization
 For some unknown reason VGG16 with batch normalization gave worse results than plain VGG16 so we did not perform more testing with it.
@@ -78,7 +79,6 @@ For some unknown reason VGG16 with batch normalization gave worse results than p
 ResNet-101 was the first ResNet that started to validation f1 score that we were happy with and so we decided to forget about ResNet-34 and ResNet-50.
 
 * replaced output layer with two linear layers 2048->14 and trained all the layers
-* validation f1 score of 0.73
 
 ##### ResNet-152
 This was the model that we got best results with. Described in more detail under *Short description of the final model and training process*.
