@@ -6,12 +6,12 @@ All the models have been trained on our own training set (60% of the initial dat
 
 Results for models that utilize data augmentation techniques.
 
-| Model | F1-score | Precision | Recall | Training time |
+| Model | F1-score | Precision | Recall | Ratio of F1 (tr/val) | Training time |
 | --- | --- | --- | --- | --- | 
-| Feed forward 1-layer | 0.245 | 0.191 | 0.341 | 22min 57s | 
-| Feed forward 2-layer | 0.269 | 0.206 | 0.387 | 24min 9s | 
-| Convolutional | 0.145 | 0.118 | 0.186 | 26min 55s | 
-| Plain ResNet-152 | --- | --- | --- | --- | 
+| Feed forward 1-layer | 0.245 | 0.191 | 0.341 | 0.881 | 22min 57s | 
+| Feed forward 2-layer | 0.269 | 0.206 | 0.387 | 0.989 | 24min 9s | 
+| Convolutional | 0.145 | 0.118 | 0.186 | 0.879 | 26min 55s | 
+| Plain ResNet-152 | --- | --- | --- | --- | --- |
 
 Results for models that utilize transfer learning and data augmentation techniques.
 
