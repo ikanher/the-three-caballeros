@@ -45,6 +45,9 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 
 *Threshold search for the final model, resnet-152*
 
+### Fighting imbalanced data
+Some of the labels (e.g. *people*) were very common in the training data, some (e.g. *baby* and *river*) very rare. Our approach to working with the label imbalance was using the pos_weights option of the BCEWithLogitsLoss loss function. We calculated pos_weights (using the function calculate_label_statistics present in notebook 8 but removed from the final notebook 20) with the formula pos_weights = negative_label_count / positive_label_count for each label. So for e.g. label *baby* the pos_weight was 19905/95 = 209.526. In this case, the loss would act as if the dataset contained 95 * 209.526 = 19 905 positive samples (each mistake with a positive sample would get a very large weight with regard to gradient updates). Additional information on the pos_weights is available in the [loss function's documentation](https://pytorch.org/docs/master/generated/torch.nn.BCEWithLogitsLoss.html).
+
 ### Final code structure
 Functions
 * Data loading
@@ -67,11 +70,11 @@ Prediction evaluation and visualization
 
 ## Model selection
 
-As SGD is known to generalize better [1] than it's adaptive variations we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
+As SGD is known to generalize better [1] than its adaptive variations, we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
 
 It was quite clear from the beginning that we would need transfer learning to achieve any notable results. But to test our pipeline and to get some kind of baselines we started with one and two layer feedforward neural networks. As suspected these did not give very good results. We also tested a simple CNN and more complex CNN (similar to VGG16) and tried to train these without much success. But now we knew that our pipeline worked and we could switch to pretrained models, which will be described next.
 
-We started with a model that is easy to understand, known to be robust and perform rather well. So the first model gave us some notable results was ***VGG16***. Training was performed manually, using plain SGD with Momentum. After some initial fuzzing around we noticed that 0.01 was the learning rate to use. The model was trained for several epochs and after the validation F1 -score stopped increasing the learning rate was decreased and more training was performed. After many trial-and-errors training periods we managed to get the validation F1 -score to around 0.71. However, the training score never got very high and it was obvious that we are not overfitting yet.
+We started with a model that is easy to understand, known to be robust and perform rather well. So the first model gave us some notable results was ***VGG16***. Training was performed manually, using plain SGD with Momentum. After some initial fuzzing around we noticed that 0.01 was the learning rate to use. The model was trained for several epochs and after the validation F1 -score stopped increasing, the learning rate was decreased and more training was performed. After many trial-and-errors training periods we managed to get the validation F1 -score to around 0.71. However, the training score never got very high and it was obvious that we are not overfitting yet.
 
 For ***VGG16*** we retrained all the layers but replaced the fully connected layers with two layers of our own: 4096->2048 and 2048->14 with ReLUs between.
 
@@ -209,7 +212,10 @@ We also evaluated our model's by-label performance by plotting a confusion matri
 
 ![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
 
-# References
+## Possibilities for further improvement
+- **Ensemble methods** could provide improved results. We considered using 3 of our top models and implementing a per-label majority voting ensemble. This was however left at the idea level and not implemented within this project.
+
+## References
 
 1 - Wilson A. et al., The Marginal Value of Adaptive Gradient Methods in Machine Learning, http://papers.nips.cc/paper/7003-the-marginal-value-of-adaptive-gradient-methods-in-machine-learning.pdf
 
