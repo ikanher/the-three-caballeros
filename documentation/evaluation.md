@@ -5,7 +5,7 @@
 | Convolutional | 0.145 | 0.118 | 0.186 | 26min 55s | 
 | Plain ResNet-152 | --- | --- | --- | --- | 
 
-Results for models that use transfer learning.
+Results for models that use transfer learning and data augmentation.
 
 | Model | F1-score | Precision | Recall |--- | 
 | --- | --- | --- | --- | --- | 
