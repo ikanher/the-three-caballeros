@@ -50,7 +50,7 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 * Evaluation of model
 * Visualizing confusion matrices for each class
 
-## Model selection
+## Pretrained model selection
 
 As SGD is known to generalize better [1] than it's adaptive variations we decided to use SGD for optimization. The optimization was done using SGD with Momentum and SGD with Nesterov Momentum.
 
