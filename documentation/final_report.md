@@ -13,7 +13,9 @@ Spring 2020
 
 ## Short description of the final model and training process
 ### Model: Resnet-152
-Our best-performing model was a deep pretrained convolutional neural network with residual connections. We froze all layers but the final layer, which we replaced with our own 2048->14 fully connected layer, which we trained. Our final F1-score on own test data was 0.78 (micro averaging).
+Our best-performing model was a deep pretrained convolutional neural network with residual connections. We froze all layers but the final layer, which we replaced with our own 2048->14 fully connected layer, which we trained. Our final F1-score on own test data was 0.78 (micro averaging). 
+
+Our final model is constructed so that we first trained for 25 epochs on our train data. We then continued training the model on our validation data and test data for 1 epoch each. Evaluation of model performance is done before the last two epochs.
 
 ### Preprocessing
 * Read in images and labels so that we could attach a one-hot encoded vector of labels to each image
@@ -44,10 +46,7 @@ Our best-performing model was a deep pretrained convolutional neural network wit
 * Training
 * Evaluation of model
 * Visualizing confusion matrices for each class
-
-### Constructing the Final model
-
-Our final model is constructed so that we first trained a ResNet-152 model for 25 epochs on our train data utilizing transfer learning and data augmentation. We then continued training the model on our validation data and test data for 1 epoch each. 
+ 
 
 ## Other approaches and parameters the group tried
 
