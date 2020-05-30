@@ -9,9 +9,7 @@ Spring 2020
 
 **Chosen dataset**: Images
 
-## Final F1-score of the group’s model on the test set: xxx
-
-WE DIDN't GET THE true_labels.txt FILE, DID WE?
+## Final F1-score of the group’s model evaluated against our own test set: 0.759
 
 Final predictions: [Predictions on actual test set using the final model](../results/resnet152_final_actual_pred.txt)
 
