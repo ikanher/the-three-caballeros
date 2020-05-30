@@ -21,7 +21,7 @@ Results for models that utilize transfer learning and data augmentation techniqu
 | VGG16 with BN | 0.669 | 0.565 | 0.820 | 0.967 |  27min 44s | 
 | ResNet-34 | 0.726 | 0.684 | 0.774 | 1.137 | 27min 36s | 
 | ResNet-50 | 0.749 | 0.727 | 0.772 | 1.350 | 29min 29s | 
-| ResNet-101 | 0.745 | 0.718 | 0.773 | 1.161 | 36min 57s | 
+| ResNet-101 | 0.745 | 0.718 | 0.773 | 1.168 | 36min 57s | 
 | ResNet-152 | 0.759 | 0.729 | 0.791 | 1.161 | 42min 22s | 
 
 Results for models that utilize transfer learning (without data augmentation).
