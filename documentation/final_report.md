@@ -47,14 +47,7 @@ Our best-performing model was a deep pretrained convolutional neural network wit
 
 ### Constructing the Final model
 
-Our final model is constructed so that we first trained a ResNet-152 model for 25 epochs on our train data utilizing transfer learning and data augmentation. We then continued training the model on our validation data and test data for 1 epoch each. Below are listed results (```F1-score```, ```Precision```, ```Recall```) of running the ```test_eval.py``` after each step of  step-wise training process.
-
-| Model | F1-score | Precision | Recall | 
-| --- | --- | --- | --- | 
-| ResNet-152 train | 0.759 | 0.729 | 0.791 |
-| ResNet-152 train, validation  | 0.750 | 0.705 | 0.801 | 
-| ResNet-152 final  | 0.754 | 0.703 | 0.813 | 
-
+Our final model is constructed so that we first trained a ResNet-152 model for 25 epochs on our train data utilizing transfer learning and data augmentation. We then continued training the model on our validation data and test data for 1 epoch each. 
 
 ## Other approaches and parameters the group tried
 
