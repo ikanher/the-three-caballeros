@@ -62,7 +62,7 @@ As a side note: we also tested a batch normalized version of ***VGG16*** but for
 
 After establishing a well working learning rate it was time to drop the manual labor: we adopted One Cycle Policy [2]. This gave us the opportunity to use the learning rate that had been proven to work (0.01) and use that as a max learning rate for One Cycle Policy. For momentum we used a base of 0.5 and a max value to 0.95. We tested both normal Momentum and Nesterov Momentum, which of the latter was used to train our more advanced models. At this point we still did not overfit.
 
-After not yet overfitting it was time to move to more modern networks. We started with ***ResNet-34*** which did not perform very well. The same thing happened with ***ResNet-50***, so we tuned up again. After training for 20 epochs we reached a training and validation F1 -scores of 0.94 and 0.71 respectively. Finally, ***ResNet-101*** was the first model that started to overfit!
+After not yet overfitting it was time to move to more modern networks. We started with ***ResNet-34*** which did not perform very well. The same thing happened with ***ResNet-50***, so we tuned up again and switched to ***ResNet-101***. After training it for 20 epochs we reached a training and validation F1 -scores of 0.94 and 0.71 respectively. Finally, ***ResNet-101*** was the first model that started to overfit!
 
 For ***ResNet*** models we just replaced the fully connected layers with a direct mapping to our label space of 14 outputs. For example, with ***ResNet-34/50*** we used a linear layer with 512 inputs and 14 outputs, and with ***ResNet-101/152*** we used a linear layer with 2048 input and 14 outputs.
 
