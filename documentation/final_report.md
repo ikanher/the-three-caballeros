@@ -1,7 +1,7 @@
 # Final report
-Project for course Deep Learning
-University of Helsinki
-Spring 2020
+Project for course Deep Learning  
+University of Helsinki  
+Spring 2020  
 
 **Group name**: The Three Caballeros
 
