@@ -40,10 +40,6 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 
 ![Threshold search for teh resnet-152](images/resnet152_threshold_search.png)
 
-* **Per label performance**: We plotted a label-by-label confusion matrix to better assess our model's performance.
-
-![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
-
 
 ### Functions and parts of final code
 * Data loading
@@ -164,8 +160,12 @@ The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.6
 ![False negative river](./errorimages/falsenegatives/fn_river.png)
 - **Obviously wrong labels**. The labels have been given by humans (on Amazon mechanical turk or some other similar service). Humans make mistakes. So sometimes the model predicts something that seems more right than the ground truth. The only way to improve this is to get better quality training data.
 
-### Error report per label
-As calculated on our own test set (~20 % of the given dataset).
+
+
+### Per label performance
+
+To assess our model's per-label performance we computed a by-label performance evaluation report on our own testset (20% of the given dataset):
+
 ```
               precision    recall  f1-score   support
 
@@ -189,3 +189,11 @@ tree      13       0.72      0.60      0.66       111
 weighted avg       0.81      0.75      0.78      4280
  samples avg       0.39      0.37      0.37      4280
 ```
+
+We also plotted the data as a by-label confusion matrix. In the confusion matrix also non-labelled images are taken into account. 
+
+![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
+
+The data and the confusion matrices clearly show the effects of biased in data. 
+
+
