@@ -111,10 +111,12 @@ Results for models that utilize transfer learning (without data augmentation).
 | ResNet-50 no aug with dropout | 0.760 | 0.783 | 0.739 | 1.344 | 13min 51s | 
 
 ## Other notes
+
 * Labels in the training set are not all independent. E.g male, female and baby photos are very often also people photos. It's important to train the model with all labels for a certain image so that it can learn from these dependencies.
 
 ## Error analysis
-The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.65). The precision and recall components were quite close to each other for all other classes but *sea* (precision 0.70, recall 0.43), which would suggest that using class-specific thresholds would not give any significant improvement for any classes but perhaps sea. For sea, the precision score is higher than the recall score, so lowering the threshold might improve the performance. 
+
+The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.65), but this is not surpising as the labels in question had the least training examples (120, 173, and 95 respectively). The precision and recall components were quite close to each other for all other classes but *sea* (precision 0.70, recall 0.43), which would suggest that using class-specific thresholds would not give any significant improvement for any classes but perhaps sea. For sea, the precision score is higher than the recall score, so lowering the threshold might improve the performance.
 
 ### Error types and representative examples
 
