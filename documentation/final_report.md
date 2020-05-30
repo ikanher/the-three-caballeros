@@ -45,9 +45,7 @@ Our best-performing model was a deep pretrained convolutional neural network wit
 * Evaluation of model
 * Visualizing confusion matrices for each class
 
-
-
-## Constructing the Final model
+### Constructing the Final model
 
 Our final model is constructed so that we first trained a ResNet-152 model for 25 epochs on our train data utilizing transfer learning and data augmentation. We then continued training the model on our validation data and test data for 1 epoch each. Below are listed results from the step-by-step training process.
 
