@@ -194,6 +194,6 @@ We also evaluated our model's by-label performance by plotting a confusion matri
 
 ![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
 
-The data and the confusion matrices clearly show the effects of biased in data. 
+
 
 
