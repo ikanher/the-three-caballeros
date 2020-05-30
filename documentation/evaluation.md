@@ -29,5 +29,5 @@ Results for models that utilize transfer learning (without data augmentation).
 | Model | F1-score | Precision | Recall | Ratio of F1 | Training time |
 | --- | --- | --- | --- | --- | --- | 
 | ResNet-50 no aug | 0.751 | 0.783 | 0.722 | 1.350 | 14min 4s | 
-| ResNet-50 no aug with dropout | --- | --- | --- | --- | --- | 
+| ResNet-50 no aug with dropout | 0.748 | 0.755 | 0.742 | 1.233 | 42min 22s | 
 
