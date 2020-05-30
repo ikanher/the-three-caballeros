@@ -14,45 +14,47 @@
 - [x] Report validation loss when training
 - [x] Confusion matrix (Eeva-Maria)
 - [x] Confusion matrix visulizations (Eeva-Maria)
-- [ ] Other pre-processing (whitening, ...)?
 
 ## Some problems
 - [x] Support for multi-label inputs
 - [x] Multi-label loss
 
 ## Possible problems
-- [ ] When leaving out some data the normalization statistics need to be recalculated? (probably just going to use all the data now that we have pos weights)
+- [x] When leaving out some data the normalization statistics need to be recalculated? (probably just going to use all the data now that we have pos weights)
 - [x] What to do with imbalance of classes (`pos_weight` seems to work well)
 
 ## Improvements
 - [x] Train, valid and test sets to have separate transformations
 - [x] Data augmentation
 - [x] Adjust BCEWithLogitsLoss with parameter `pos_weight` to compensate imbalanced labels
-- [ ] Improved CNN structure - probably better just to skip to pretrained models, training from scratch is not feasible
+- [x] Improved CNN structure - probably better just to skip to pretrained models, training from scratch is not feasible
 - [x] [One Cycle Policy](https://arxiv.org/pdf/1803.09820.pdf) (implemented in 08 -notebook)
 
 ## Transfer learning
 - [x] VGG16 (currently approx 0.67 validation f1)
 - [x] ResNet 18/34/50 - DOES NOT SEEM TO FIT
 - [x] ResNet 101 - Finally starting to overfit with this, Train f1: 0.9421016, Valid f1: 0.7125345
-- [ ] ResNet 152 - Could be worth testing?
-- [ ] Inception?
-- [ ] Other models? [Torcvision models](https://pytorch.org/docs/stable/torchvision/models.html)
-- [ ] More recent model, such as ResNet Inception v2 [not yet in torchvision](https://github.com/Cadene/pretrained-models.pytorch)?
+- [x] ResNet 152
+
+## Outscoped approaches
+- Inception?
+- Other models? [Torcvision models](https://pytorch.org/docs/stable/torchvision/models.html)
+- More recent model, such as ResNet Inception v2 [not yet in torchvision](https://github.com/Cadene/pretrained-models.pytorch)?
+- Ensembles, such as per-label majority-voting between 3 of our best models
 
 ## Final tweaks
-- [ ] Train with valid/test data
+- [x] Train with valid/test data
 
 ## Report
-- [ ] Explain what approaches and parameters you have tried
-- [ ] What worked well and what did not
-- [ ] **error analysis**: present some representative examples, with possible explanations about what does not work and how it could be made to work better
+- [x] Explain what approaches and parameters you have tried
+- [x] What worked well and what did not
+- [x] *Error analysis*: present some representative examples, with possible explanations about what does not work and how it could be made to work better
 
 ## Required for the course staff:
 - [x] Output for `test_eval.py` -script
 
 ## Submission
-- [ ] Project code
-- [ ] System output on test data
-- [ ] A short report / documentation
-- [ ] Return zip to roman.yangarber@helsinki.fi, lidia.pivovarova@helsinki.fi, anh-duc.vu@helsinki.fi
+- [x] Project code
+- [x] System output on test data
+- [x] A short report / documentation
+- [x] Return zip to roman.yangarber@helsinki.fi, lidia.pivovarova@helsinki.fi, anh-duc.vu@helsinki.fi
