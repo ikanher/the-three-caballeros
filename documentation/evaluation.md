@@ -22,7 +22,7 @@ Results for models that utilize transfer learning and data augmentation techniqu
 | ResNet-101 | 0.745 | 0.718 | 0.773 | 36min 57s | 
 | ResNet-152 | --- | --- | --- | --- | 
 
-Results for models that utilize transfer learning and data augmentation techniques.
+Results for models that utilize transfer learning (without data augmentation).
 
 | Model | F1-score | Precision | Recall | Training time |
 | --- | --- | --- | --- | --- | 
