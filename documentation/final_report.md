@@ -164,33 +164,33 @@ The labels with the lowest f1 scores were river (0.33), sea (0.54) and baby (0.6
 
 ### Per label performance
 
-To assess our model's per-label performance we computed a by-label performance evaluation report on our own testset (20% of the given dataset):
+To assess our model's per-label performance we computed a by-label classification report on our own testset (20% of the given dataset):
 
 ```
               precision    recall  f1-score   support
 
-baby       0       0.71      0.60      0.65        25
-bird       1       0.78      0.72      0.75        78
-car        2       0.79      0.79      0.79        58
-clouds     3       0.82      0.67      0.74       246
-dog        4       0.79      0.80      0.80        92
-female     5       0.82      0.68      0.75       762
-flower     6       0.85      0.71      0.77       174
-male       7       0.70      0.65      0.67       636
-night      8       0.73      0.68      0.70       127
-people     9       0.84      0.92      0.88      1158
-portrait  10       0.87      0.78      0.82       719
-river     11       0.37      0.29      0.33        34
-sea       12       0.70      0.43      0.54        60
-tree      13       0.72      0.60      0.66       111
+           0       0.54      0.67      0.60        21
+           1       0.68      0.75      0.71        72
+           2       0.66      0.81      0.73        58
+           3       0.67      0.85      0.75       200
+           4       0.69      0.74      0.71        94
+           5       0.69      0.75      0.72       631
+           6       0.71      0.80      0.75       145
+           7       0.60      0.69      0.64       595
+           8       0.55      0.69      0.62       118
+           9       0.88      0.84      0.86      1262
+          10       0.77      0.86      0.81       644
+          11       0.33      0.48      0.39        27
+          12       0.52      0.68      0.59        37
+          13       0.63      0.72      0.67        93
 
-   micro avg       0.81      0.75      0.78      4280
-   macro avg       0.75      0.67      0.70      4280
-weighted avg       0.81      0.75      0.78      4280
- samples avg       0.39      0.37      0.37      4280
+   micro avg       0.73      0.79      0.76      3997
+   macro avg       0.64      0.74      0.68      3997
+weighted avg       0.74      0.79      0.76      3997
+ samples avg       0.37      0.38      0.37      3997
 ```
 
-We also plotted the data as a by-label confusion matrix. In the confusion matrix also non-labelled images are taken into account. 
+We also evaluated our model's by-label performance by plotting a confusion matrix of the classification report data. In the confusion matrix we also assess our model's performance on non-labelled images. 
 
 ![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
 
