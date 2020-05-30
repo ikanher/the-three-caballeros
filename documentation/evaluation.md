@@ -14,7 +14,7 @@ Results for models that use transfer learning.
 | ResNet-18 | --- | --- | --- | --- | 
 | ResNet-34 | --- | --- | --- | --- | 
 | ResNet-50 | --- | --- | --- | --- | 
-| ResNet-101 | --- | --- | --- | --- | 
+| ResNet-101 | 0.745 | 0.718 | 0.773 | 36min 57s | 
 | ResNet-152 | --- | --- | --- | --- | 
 
 
