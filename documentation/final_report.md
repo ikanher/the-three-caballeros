@@ -24,7 +24,7 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 * Also used **images with no labels** (n=9824 out of 20000)
 * Used **train-validation-test split** of 0.6-0.2-0.2
 * **Normalized images** using the means and stds of the RGB channels computed over the given image set
-* **Random data augmentation** applied to train set images only: we used random horizontal flipping, rotation, colorjitter, grayscaling and perspective changes.
+* **Random data augmentation** applied to train set images only: we used random horizontal flipping, rotation, colorjitter, grayscaling and perspective changes
 * Calculated **pos\_weights** (to be used with BCEWithLogitsLoss) for all labels to compensate the label imbalance
 
 ### Training
@@ -32,23 +32,38 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 * Stochastic gradient descent as the **training algorithm**
 * **Batch size** 64
 * **Learning rate**: using one-cycle-policy 
-* **25 epochs**: the validation accuracy had leveled off at this point and the validation loss was already rising, so we opted for early stopping after 25 epochs.
+* **25 epochs**: the validation accuracy had leveled off at this point and the validation loss was already rising, so we opted for early stopping after 25 epochs
+* During training, we evaluated the prediction accuracy on the validation set using the **threshold** 0.75 (for the probability of the an individual label to attach that label on the image). The training-phase threshold does not have direct effect on the training (only on our evaluation of how the model is doing and when we should opt for early stopping).
 
 ![Training of the resnet-152](images/resnet152_train_curves.png)
 
 ### Evaluation
 * We used **f1 scores** to evaluate models with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric. We also considered the 'macro' averaging, which could have been appropriate if the label frequencies in the test set would have been different from training data. But our understanding was that the test set would be similar to the training set also in this aspect (and 'micro' seemed to be used in the test\_eval.py script), so we stuck with 'micro'.
-* **Thresholds.** We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score. Our model gave best results with the threshold of 0.65.
+* **Thresholds.** We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score. Our model gave best results with the threshold of 0.65, but the thresholds in the range 0.55-0.80 all had f1 scores very close to each other in the range 0.774-0.778.
 
 ![Threshold search for the resnet-152](images/resnet152_threshold_search.png)
 
+*Threshold search for the final model, resnet-152*
 
-### Functions and parts of final code
+### Final code structure
+Functions
 * Data loading
-* Visualizing predictions
-* Training
-* Evaluation of model
-* Visualizing confusion matrices for each class
+* Models
+* Training and evaluation functions
+* Visualization functions
+* Prediction functions
+
+Training
+* Set variables for data loading and training
+* Create and save / load dataloaders from disk
+* Select model
+* Train a model or load an existing model from disk
+
+Prediction evaluation and visualization
+* Visualization
+* Predict and evaluate using our own test data
+* Add our validation and test data and evaluate
+* Predict and evaluate using actual test data
 
 ## Model selection
 
