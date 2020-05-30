@@ -38,7 +38,8 @@ Our final model is constructed so that we first trained for 25 epochs on our tra
 * We used **f1 scores** to evaluate models with **'micro' averaging**, where each sample-class pair is given an equal contribution to the overall metric. We also considered the 'macro' averaging, which could have been appropriate if the label frequencies in the test set would have been different from training data. But our understanding was that the test set would be similar to the training set also in this aspect (and 'micro' seemed to be used in the test_eval.py script), so we stuck with 'micro'.
 * **Thresholds.** We searched for the optimal threshold by scanning the from 0.05 to 1.0 with 0.05 steps and chose the threshold that led to maximum validation f1 score. Our model gave best results with the threshold of 0.65.
 
-![Threshold search for teh resnet-152](images/resnet152_threshold_search.png)
+![Confusion matrix per label for resnet-152](../results/resnet152_confusion_matrix.png)
+
 
 ### Functions and parts of final code
 * Data loading
