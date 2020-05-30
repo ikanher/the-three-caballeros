@@ -2,7 +2,7 @@
 
 Below are listed the results of running the ```test_eval.py``` script for each trained model against our own test set (20% of the initial data). 
 
-All the models have been trained on our own training set (60% of the initial data). The models are trained for 25 epochs using a batch size of 64. For all models we use ```BCEWithLogitsLoss``` loss, ```SGD``` optimizer and ```OneCycle``` scheduler (documented in detail above).
+All the models have been trained on our own training set (60% of the initial data). The models are trained for 25 epochs using a batch size of 64. For all models we use ```BCEWithLogitsLoss``` loss function, ```SGD``` optimizer and ```OneCycle``` scheduler (documented in detail above).
 
 Results for models that utilize data augmentation techniques.
 
