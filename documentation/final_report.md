@@ -13,7 +13,7 @@ Spring 2020
 
 WE DIDN't GET THE true_labels.txt FILE, DID WE?
 
-Final results: [../results/resnet152_final_actual_pred.txt]
+Final predictions: [Predictions on actual test set using the final model](../results/resnet152_final_actual_pred.txt)
 
 ## Short description of the final model and training process
 ### Model: Resnet-152
